@@ -1,5 +1,6 @@
 package org.example.hibernate.demo.repository;
 
+import jakarta.persistence.EntityManagerFactory;
 import org.example.hibernate.demo.entity.User;
 import org.example.hibernate.demo.entity.UserSkill;
 import org.example.hibernate.demo.utility.SampleDataGenerator;
@@ -8,10 +9,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 
-import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
-import static javax.persistence.Persistence.createEntityManagerFactory;
+import static jakarta.persistence.Persistence.createEntityManagerFactory;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.slf4j.LoggerFactory.getLogger;
 

@@ -1,14 +1,15 @@
 package org.example.hibernate.demo.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
+import static jakarta.persistence.FetchType.LAZY;
+import static jakarta.persistence.GenerationType.IDENTITY;
 import static java.text.MessageFormat.format;
 import static java.util.Objects.hash;
 import static java.util.stream.Collectors.joining;
-import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.GenerationType.IDENTITY;
 
 @NamedEntityGraph(
         name = "user-entity-graph",

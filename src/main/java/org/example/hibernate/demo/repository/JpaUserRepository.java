@@ -1,11 +1,11 @@
 package org.example.hibernate.demo.repository;
 
+import jakarta.persistence.EntityGraph;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
 import org.example.hibernate.demo.entity.User;
 
-import javax.persistence.EntityGraph;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class JpaUserRepository implements UserRepository {
@@ -22,7 +22,7 @@ public class JpaUserRepository implements UserRepository {
         EntityGraph<?> entityGraph = entityManager.getEntityGraph("user-entity-graph");
 
         TypedQuery<User> query = entityManager.createQuery("FROM User", User.class)
-                .setHint("javax.persistence.loadgraph", entityGraph);
+                .setHint("jakarta.persistence.loadgraph", entityGraph);
 
         List<User> users = query.getResultList();
 
@@ -38,7 +38,7 @@ public class JpaUserRepository implements UserRepository {
 
         TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.name = :name", User.class)
                 .setParameter("name", name)
-                .setHint("javax.persistence.loadgraph", entityGraph);
+                .setHint("jakarta.persistence.loadgraph", entityGraph);
 
         User user = query.getSingleResult();
 

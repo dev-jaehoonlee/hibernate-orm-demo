@@ -1,13 +1,12 @@
 package org.example.hibernate.demo.entity;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.*;
-
+import static jakarta.persistence.FetchType.LAZY;
+import static jakarta.persistence.GenerationType.IDENTITY;
 import static java.text.MessageFormat.format;
 import static java.util.Objects.hash;
-import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Where(clause = "has_deleted = false")
 @Table(name = "user_skills")
