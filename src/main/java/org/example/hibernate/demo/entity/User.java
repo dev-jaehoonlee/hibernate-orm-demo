@@ -11,13 +11,6 @@ import static java.text.MessageFormat.format;
 import static java.util.Objects.hash;
 import static java.util.stream.Collectors.joining;
 
-@NamedEntityGraph(
-        name = "user-entity-graph",
-        attributeNodes = {
-                @NamedAttributeNode(value = "detail"),
-                @NamedAttributeNode(value = "skills")
-        }
-)
 @Table(name = "users")
 @Entity(name = "User")
 public class User {

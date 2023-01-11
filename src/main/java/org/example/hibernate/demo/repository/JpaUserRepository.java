@@ -1,6 +1,9 @@
 package org.example.hibernate.demo.repository;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 import org.example.hibernate.demo.entity.User;
 
 import java.util.List;
@@ -19,10 +22,7 @@ public class JpaUserRepository implements UserRepository {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        EntityGraph<?> entityGraph = entityManager.getEntityGraph("user-entity-graph");
-
-        TypedQuery<User> query = entityManager.createQuery("FROM User", User.class)
-                .setHint("jakarta.persistence.loadgraph", entityGraph);
+        TypedQuery<User> query = entityManager.createQuery("SELECT DISTINCT(u) FROM User u LEFT OUTER JOIN FETCH u.detail LEFT OUTER JOIN FETCH u.skills", User.class);
 
         List<User> users = query.getResultList();
 
@@ -38,11 +38,8 @@ public class JpaUserRepository implements UserRepository {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        EntityGraph<?> entityGraph = entityManager.getEntityGraph("user-entity-graph");
-
-        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.name = :name", User.class)
-                .setParameter("name", name)
-                .setHint("jakarta.persistence.loadgraph", entityGraph);
+        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u LEFT OUTER JOIN FETCH u.detail LEFT OUTER JOIN FETCH u.skills WHERE u.name = :name", User.class)
+                .setParameter("name", name);
 
         User user = query.getSingleResult();
 
