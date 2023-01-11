@@ -7,7 +7,6 @@ import org.example.hibernate.demo.entity.UserSkill;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 
 public class SampleDataGenerator {
 
@@ -176,24 +175,6 @@ public class SampleDataGenerator {
         s74.setDeleted(false);
         s74.setUser(m7);
         entityManager.persist(s74);
-
-        transaction.commit();
-        entityManager.close();
-    }
-
-    public static void removeSampleData(EntityManagerFactory entityManagerFactory) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
-
-        transaction.begin();
-
-        Query deleteUserSkillsQuery = entityManager.createQuery("DELETE FROM UserSkill");
-        Query deleteUserDetailsQuery = entityManager.createQuery("DELETE FROM UserDetail");
-        Query deleteUsersQuery = entityManager.createQuery("DELETE FROM User");
-
-        deleteUserSkillsQuery.executeUpdate();
-        deleteUserDetailsQuery.executeUpdate();
-        deleteUsersQuery.executeUpdate();
 
         transaction.commit();
         entityManager.close();
