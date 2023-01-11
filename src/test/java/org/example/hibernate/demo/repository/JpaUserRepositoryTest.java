@@ -38,6 +38,8 @@ class JpaUserRepositoryTest {
 
         log.debug("Found {} users.", users.size());
         assertEquals(7, users.size());
+
+        users.forEach(user -> log.debug(user.toString()));
     }
 
     @Test

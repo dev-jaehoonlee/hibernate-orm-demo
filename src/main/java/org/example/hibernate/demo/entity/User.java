@@ -10,13 +10,6 @@ import static java.util.stream.Collectors.joining;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@NamedEntityGraph(
-        name = "user-entity-graph",
-        attributeNodes = {
-                @NamedAttributeNode(value = "detail"),
-                @NamedAttributeNode(value = "skills")
-        }
-)
 @Table(name = "users")
 @Entity(name = "User")
 public class User {
