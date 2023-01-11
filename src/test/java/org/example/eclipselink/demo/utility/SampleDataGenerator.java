@@ -1,11 +1,11 @@
-package org.example.hibernate.demo.utility;
+package org.example.eclipselink.demo.utility;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
-import org.example.hibernate.demo.entity.User;
-import org.example.hibernate.demo.entity.UserDetail;
-import org.example.hibernate.demo.entity.UserSkill;
+import org.example.eclipselink.demo.entity.User;
+import org.example.eclipselink.demo.entity.UserDetail;
+import org.example.eclipselink.demo.entity.UserSkill;
 
 public class SampleDataGenerator {
 

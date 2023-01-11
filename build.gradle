@@ -10,7 +10,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.hibernate:hibernate-core:6.1.6.Final'
+    implementation 'org.eclipse.persistence:eclipselink:4.0.0'
+    implementation 'org.eclipse.persistence:org.eclipse.persistence.extension:4.0.0'
+    implementation 'org.eclipse.persistence:org.eclipse.persistence.json:4.0.0'
     implementation 'com.h2database:h2:2.1.214'
     implementation 'ch.qos.logback:logback-classic:1.4.5'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'

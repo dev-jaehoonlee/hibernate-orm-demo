@@ -1,7 +1,7 @@
-package org.example.hibernate.demo.repository;
+package org.example.eclipselink.demo.repository;
 
 import jakarta.persistence.*;
-import org.example.hibernate.demo.entity.User;
+import org.example.eclipselink.demo.entity.User;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class JpaUserRepository implements UserRepository {
 
         EntityGraph<?> entityGraph = entityManager.getEntityGraph("user-entity-graph");
 
-        TypedQuery<User> query = entityManager.createQuery("FROM User", User.class)
+        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u", User.class)
                 .setHint("jakarta.persistence.loadgraph", entityGraph);
 
         List<User> users = query.getResultList();

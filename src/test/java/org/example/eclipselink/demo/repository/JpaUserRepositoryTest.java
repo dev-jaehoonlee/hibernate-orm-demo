@@ -1,9 +1,9 @@
-package org.example.hibernate.demo.repository;
+package org.example.eclipselink.demo.repository;
 
 import jakarta.persistence.EntityManagerFactory;
-import org.example.hibernate.demo.entity.User;
-import org.example.hibernate.demo.entity.UserSkill;
-import org.example.hibernate.demo.utility.SampleDataGenerator;
+import org.example.eclipselink.demo.entity.User;
+import org.example.eclipselink.demo.entity.UserSkill;
+import org.example.eclipselink.demo.utility.SampleDataGenerator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ class JpaUserRepositoryTest {
 
     private static final Logger log = getLogger(JpaUserRepositoryTest.class);
 
-    private static final EntityManagerFactory entityManagerFactory = createEntityManagerFactory("hibernate-orm-demo");
+    private static final EntityManagerFactory entityManagerFactory = createEntityManagerFactory("eclipselink-orm-demo");
 
     private final UserRepository userRepository;
 

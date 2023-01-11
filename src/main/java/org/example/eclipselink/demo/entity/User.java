@@ -1,4 +1,4 @@
-package org.example.hibernate.demo.entity;
+package org.example.eclipselink.demo.entity;
 
 import jakarta.persistence.*;
 

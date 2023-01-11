@@ -1,6 +1,6 @@
-package org.example.hibernate.demo.repository;
+package org.example.eclipselink.demo.repository;
 
-import org.example.hibernate.demo.entity.User;
+import org.example.eclipselink.demo.entity.User;
 
 import java.util.List;
 

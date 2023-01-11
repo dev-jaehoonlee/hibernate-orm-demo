@@ -1,30 +1,28 @@
-package org.example.hibernate.demo.entity;
+package org.example.eclipselink.demo.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Where;
 
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static java.text.MessageFormat.format;
 import static java.util.Objects.hash;
 
-@Where(clause = "has_deleted = false")
-@Table(name = "user_skills")
-@Entity(name = "UserSkill")
-public class UserSkill {
+@Table(name = "user_details")
+@Entity(name = "UserDetail")
+public class UserDetail {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "skill_id")
+    @Column(name = "detail_id")
     private Long id;
 
-    @Column(name = "skill_name")
-    private String skillName;
+    @Column(name = "city")
+    private String city;
 
-    @Column(name = "has_deleted")
-    private Boolean deleted;
+    @Column(name = "is_active")
+    private Boolean active;
 
-    @ManyToOne(fetch = LAZY)
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -36,20 +34,20 @@ public class UserSkill {
         this.id = id;
     }
 
-    public String getSkillName() {
-        return skillName;
+    public String getCity() {
+        return city;
     }
 
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public Boolean getDeleted() {
-        return deleted;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public User getUser() {
@@ -64,7 +62,7 @@ public class UserSkill {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        UserSkill that = (UserSkill) obj;
+        UserDetail that = (UserDetail) obj;
         return id.equals(that.id);
     }
 
@@ -75,6 +73,6 @@ public class UserSkill {
 
     @Override
     public String toString() {
-        return format("UserSkill(id={0}, skillName={1}, deleted={2})", id, skillName, deleted);
+        return format("UserDetail(id={0}, city={1}, active={2})", id, city, active);
     }
 }
