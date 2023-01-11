@@ -26,7 +26,7 @@ public class SampleDataGenerator {
         UserDetail d2 = new UserDetail();
         d2.setCity("New York");
         d2.setActive(false);
-        d2.setUser(m2);
+        d2.setUserId(m2.getId());
         entityManager.persist(d2);
 
         User m3 = new User();
@@ -36,7 +36,7 @@ public class SampleDataGenerator {
         UserDetail d3 = new UserDetail();
         d3.setCity("Paris");
         d3.setActive(true);
-        d3.setUser(m3);
+        d3.setUserId(m3.getId());
         entityManager.persist(d3);
 
         UserSkill s3 = new UserSkill();
@@ -52,13 +52,13 @@ public class SampleDataGenerator {
         UserDetail d41 = new UserDetail();
         d41.setCity("London");
         d41.setActive(false);
-        d41.setUser(m4);
+        d41.setUserId(m4.getId());
         entityManager.persist(d41);
 
         UserDetail d42 = new UserDetail();
         d42.setCity("Rome");
         d42.setActive(true);
-        d42.setUser(m4);
+        d42.setUserId(m4.getId());
         entityManager.persist(d42);
 
         UserSkill s4 = new UserSkill();
@@ -74,19 +74,19 @@ public class SampleDataGenerator {
         UserDetail d51 = new UserDetail();
         d51.setCity("Moscow");
         d51.setActive(false);
-        d51.setUser(m5);
+        d51.setUserId(m5.getId());
         entityManager.persist(d51);
 
         UserDetail d52 = new UserDetail();
         d52.setCity("Istanbul");
         d52.setActive(false);
-        d52.setUser(m5);
+        d52.setUserId(m5.getId());
         entityManager.persist(d52);
 
         UserDetail d53 = new UserDetail();
         d53.setCity("Berlin");
         d53.setActive(true);
-        d53.setUser(m5);
+        d53.setUserId(m5.getId());
         entityManager.persist(d53);
 
         UserSkill s51 = new UserSkill();
@@ -108,7 +108,7 @@ public class SampleDataGenerator {
         UserDetail d6 = new UserDetail();
         d6.setCity("Madrid");
         d6.setActive(true);
-        d6.setUser(m6);
+        d6.setUserId(m6.getId());
         entityManager.persist(d6);
 
         UserSkill s61 = new UserSkill();
@@ -142,13 +142,13 @@ public class SampleDataGenerator {
         UserDetail d71 = new UserDetail();
         d71.setCity("Vienna");
         d71.setActive(false);
-        d71.setUser(m7);
+        d71.setUserId(m7.getId());
         entityManager.persist(d71);
 
         UserDetail d72 = new UserDetail();
         d72.setCity("Barcelona");
         d72.setActive(true);
-        d72.setUser(m7);
+        d72.setUserId(m7.getId());
         entityManager.persist(d72);
 
         UserSkill s71 = new UserSkill();

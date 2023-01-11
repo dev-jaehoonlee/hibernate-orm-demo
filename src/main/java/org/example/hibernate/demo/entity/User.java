@@ -1,6 +1,7 @@
 package org.example.hibernate.demo.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JoinFormula;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +31,9 @@ public class User {
     @Column(name = "user_name")
     private String name;
 
-    @OneToOne(mappedBy = "user", fetch = LAZY)
+    //    @OneToOne(mappedBy = "user", fetch = LAZY)
+    @ManyToOne(fetch = LAZY) // --> This is @OneToOne mapping in fact, but cannot use it.
+    @JoinFormula(value = "(SELECT d.detail_id FROM user_details d WHERE d.user_id = user_id AND d.is_active = true LIMIT 1)", referencedColumnName = "detail_id")
     private UserDetail detail;
 
     @OneToMany(mappedBy = "user", fetch = LAZY)

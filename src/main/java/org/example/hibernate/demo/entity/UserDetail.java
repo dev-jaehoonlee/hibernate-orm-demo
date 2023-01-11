@@ -1,14 +1,12 @@
 package org.example.hibernate.demo.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Where;
 
-import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static java.text.MessageFormat.format;
 import static java.util.Objects.hash;
 
-@Where(clause = "is_active = true")
+//@Where(clause = "is_active = true")
 @Table(name = "user_details")
 @Entity(name = "UserDetail")
 public class UserDetail {
@@ -24,9 +22,12 @@ public class UserDetail {
     @Column(name = "is_active")
     private Boolean active;
 
-    @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "user_id")
+    private Long userId;
+
+//    @OneToOne(fetch = LAZY)
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     public Long getId() {
         return id;
@@ -52,13 +53,21 @@ public class UserDetail {
         this.active = active;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     @Override
     public boolean equals(Object obj) {
