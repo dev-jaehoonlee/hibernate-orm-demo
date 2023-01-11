@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManagerFactory;
 import org.example.hibernate.demo.entity.User;
 import org.example.hibernate.demo.entity.UserSkill;
 import org.example.hibernate.demo.utility.SampleDataGenerator;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -30,11 +29,6 @@ class JpaUserRepositoryTest {
     @BeforeAll
     static void setUp() {
         SampleDataGenerator.insertSampleData(entityManagerFactory);
-    }
-
-    @AfterAll
-    static void tearDown() {
-        SampleDataGenerator.removeSampleData(entityManagerFactory);
     }
 
     @Test

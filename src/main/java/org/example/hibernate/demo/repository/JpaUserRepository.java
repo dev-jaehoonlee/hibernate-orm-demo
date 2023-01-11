@@ -1,9 +1,6 @@
 package org.example.hibernate.demo.repository;
 
-import jakarta.persistence.EntityGraph;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import org.example.hibernate.demo.entity.User;
 
 import java.util.List;
@@ -19,6 +16,9 @@ public class JpaUserRepository implements UserRepository {
     @Override
     public List<User> findAllUsers() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
         EntityGraph<?> entityGraph = entityManager.getEntityGraph("user-entity-graph");
 
         TypedQuery<User> query = entityManager.createQuery("FROM User", User.class)
@@ -26,6 +26,7 @@ public class JpaUserRepository implements UserRepository {
 
         List<User> users = query.getResultList();
 
+        transaction.commit();
         entityManager.close();
 
         return users;
@@ -34,6 +35,9 @@ public class JpaUserRepository implements UserRepository {
     @Override
     public User findUserByName(String name) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
         EntityGraph<?> entityGraph = entityManager.getEntityGraph("user-entity-graph");
 
         TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.name = :name", User.class)
@@ -42,6 +46,7 @@ public class JpaUserRepository implements UserRepository {
 
         User user = query.getSingleResult();
 
+        transaction.commit();
         entityManager.close();
 
         return user;
