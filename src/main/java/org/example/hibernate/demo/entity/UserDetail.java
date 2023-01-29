@@ -24,7 +24,7 @@ public class UserDetail {
     @Column(name = "is_active")
     private Boolean active;
 
-    @OneToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.joining;
 @NamedEntityGraph(
         name = "user-entity-graph",
         attributeNodes = {
-                @NamedAttributeNode(value = "detail"),
+                @NamedAttributeNode(value = "details"),
                 @NamedAttributeNode(value = "skills")
         }
 )
@@ -30,8 +30,8 @@ public class User {
     @Column(name = "user_name")
     private String name;
 
-    @OneToOne(mappedBy = "user", fetch = LAZY)
-    private UserDetail detail;
+    @OneToMany(mappedBy = "user", fetch = LAZY)
+    private Set<UserDetail> details;
 
     @OneToMany(mappedBy = "user", fetch = LAZY)
     private Set<UserSkill> skills = new HashSet<>();
@@ -52,12 +52,12 @@ public class User {
         this.name = name;
     }
 
-    public UserDetail getDetail() {
-        return detail;
+    public Set<UserDetail> getDetails() {
+        return details;
     }
 
-    public void setDetail(UserDetail detail) {
-        this.detail = detail;
+    public void setDetails(Set<UserDetail> details) {
+        this.details = details;
     }
 
     public Set<UserSkill> getSkills() {
@@ -66,6 +66,10 @@ public class User {
 
     public void setSkills(Set<UserSkill> skills) {
         this.skills = skills;
+    }
+
+    public UserDetail getDetail() {
+        return details.stream().findFirst().orElse(null);
     }
 
     @Override
@@ -84,6 +88,6 @@ public class User {
     @Override
     public String toString() {
         return format("User(id={0}, name={1}, detail={2}, skills=[{3}])",
-                id, name, detail, skills.stream().map(UserSkill::toString).collect(joining(", ")));
+                id, name, getDetail(), skills.stream().map(UserSkill::toString).collect(joining(", ")));
     }
 }
